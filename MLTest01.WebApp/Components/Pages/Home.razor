@@ -29,7 +29,7 @@
 
         IDataView dataView = textLoader.Load(datapath);
 
-        var columnsToExclude = new[] { "PassengerId", "Name" };
+        var columnsToExclude = new[] { "PassengerId", "Name", "Ticket", "Fare", "Embarked" };
 
         dataView = context.Transforms.DropColumns(columnsToExclude)
             .Fit(dataView)
@@ -61,6 +61,8 @@
         var bestModel = experimentResult.Model;
 
         var predictions = bestModel.Transform(trainValidationData.TestSet);
+
+        var table1 = trainValidationData.TestSet.ToDataTable();
 
         predictions.Preview().RowView.ToList().ForEach(row =>
         {
