@@ -1,0 +1,76 @@
+﻿@page "/"
+@using Microsoft.ML
+@using Microsoft.ML.AutoML
+@using Microsoft.ML.Data
+@rendermode InteractiveServer
+@inject ILogger<Home> Logger
+@inject ILogger<AutoMLMonitor> autoMLMonitorLogger
+
+<PageTitle>Titanic ML Test</PageTitle>
+
+<button class="btn btn-primary" onclick=@OnClickStart>Start</button>
+
+@code {
+    private const string datapath = "Data/titanic.csv";
+
+    private async Task OnClickStart()
+    {
+        Logger.LogDebug("Start button clicked."); 
+
+        MLContext context = new MLContext();
+
+        ColumnInferenceResults columnInference = context.Auto().InferColumns(
+            datapath,
+            separatorChar: ',',
+            labelColumnName: "Survived",
+            groupColumns: false);
+
+        TextLoader textLoader = context.Data.CreateTextLoader(columnInference.TextLoaderOptions);
+
+        IDataView dataView = textLoader.Load(datapath);
+
+        var columnsToExclude = new[] { "PassengerId", "Name" };
+
+        dataView = context.Transforms.DropColumns(columnsToExclude)
+            .Fit(dataView)
+            .Transform(dataView);
+
+        var trainValidationData = context.Data.TrainTestSplit(dataView, testFraction: 0.2);
+
+        SweepablePipeline pipeline = context.Auto().Featurizer(dataView, columnInference.ColumnInformation)
+            .Append(context.Transforms.Conversion.MapValueToKey(columnInference.ColumnInformation.LabelColumnName))
+            .Append(context.Auto().MultiClassification(labelColumnName: columnInference.ColumnInformation.LabelColumnName))
+            .Append(context.Transforms.Conversion.MapKeyToValue("PredictedLabel"));
+
+        AutoMLExperiment experiment = context.Auto().CreateExperiment();
+
+        experiment
+            .SetPipeline(pipeline)
+            .SetMulticlassClassificationMetric(MulticlassClassificationMetric.MicroAccuracy, labelColumn: columnInference.ColumnInformation.LabelColumnName)
+            .SetTrainingTimeInSeconds(120)
+            .SetDataset(trainValidationData);
+
+        var monitor = new AutoMLMonitor(pipeline, autoMLMonitorLogger);
+        
+        experiment.SetMonitor(monitor);
+
+        var cancellationTokenSource = new CancellationTokenSource();
+
+        TrialResult experimentResult = await experiment.RunAsync(cancellationTokenSource.Token);
+
+        var bestModel = experimentResult.Model;
+
+        var predictions = bestModel.Transform(trainValidationData.TestSet);
+
+        predictions.Preview().RowView.ToList().ForEach(row =>
+        {
+            var predictedLabel = row.Values.FirstOrDefault(kv => kv.Key == "PredictedLabel").Value;
+            var actualLabel = row.Values.FirstOrDefault(kv => kv.Key == "Survived").Value;
+            Logger.LogDebug($"Actual: {actualLabel}, Predicted: {predictedLabel}");
+        });
+
+        Logger.LogDebug($"Best model obtained from AutoML experiment, Metric={experimentResult.Metric}");
+
+        context.Model.Save(bestModel, dataView.Schema, "Data/titanic_automl_model.zip");
+    }
+}
