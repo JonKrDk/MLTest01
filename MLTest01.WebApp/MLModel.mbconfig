@@ -1,0 +1,755 @@
+﻿{
+  "Scenario": "Regression",
+  "DataSource": {
+    "Version": 3,
+    "EscapeCharacter": "\"",
+    "ReadMultiLines": false,
+    "KeepDiacritics": false,
+    "KeepPunctuations": false,
+    "AllowQuoting": false,
+    "Type": "TabularFile",
+    "FilePath": "D:\\source\\visual-studio\\NET10\\MLTest01\\MLTest01.WebApp\\Data\\input.csv",
+    "Delimiter": ",",
+    "DecimalMarker": ".",
+    "HasHeader": true,
+    "ColumnProperties": [
+      {
+        "ColumnName": "Timestamp",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "DateTime",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CableLength",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CableWeightMeter",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CableRadius",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CableVolumeMeter",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "WaterDensity",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Gravity",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "PayloadWeight",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "PayloadVolume",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "WinchRadius",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "WinchWeight",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "WinchFriction",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CableLengthOnWinch",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CableLengthInWater",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CableSpeed",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "CableAcceleration",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "WinchAngularSpeed",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "WinchAngularAcceleration",
+        "ColumnPurpose": "Feature",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "MotorTorque",
+        "ColumnPurpose": "Label",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "MotorPower",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Motor1Current",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Motor2Current",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Motor3Current",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Motor4Current",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Motor5Current",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Motor6Current",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      },
+      {
+        "ColumnName": "Id",
+        "ColumnPurpose": "Ignore",
+        "ColumnDataFormat": "Single",
+        "IsCategorical": false,
+        "Type": "Column",
+        "Version": 5
+      }
+    ]
+  },
+  "Environment": {
+    "Type": "LocalCPU",
+    "Version": 1
+  },
+  "RunHistory": {
+    "Version": 3,
+    "Type": "Result",
+    "Trials": [
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.9961857732426973,
+        "RuntimeInSeconds": 2.091,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ],
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Timestamp"
+            ],
+            "InputColumnNames": [
+              "Timestamp"
+            ],
+            "TargetType": "Single"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration",
+              "Timestamp"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.18695989042799877,
+            "NumberOfTrees": 2135,
+            "SubsampleFraction": 0.99999977667298645,
+            "MaximumBinCountPerFeature": 347,
+            "FeatureFraction": 0.99999999,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 0.31799660095238219,
+            "LabelColumnName": "MotorTorque",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.99614451625760281,
+        "RuntimeInSeconds": 2.245,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ],
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Timestamp"
+            ],
+            "InputColumnNames": [
+              "Timestamp"
+            ],
+            "TargetType": "Single"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration",
+              "Timestamp"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.28953658232240742,
+            "NumberOfTrees": 2170,
+            "SubsampleFraction": 0.99999977667298645,
+            "MaximumBinCountPerFeature": 383,
+            "FeatureFraction": 0.98818440465942958,
+            "L1Regularization": 3.3633227658034554E-10,
+            "L2Regularization": 0.50365997505751881,
+            "LabelColumnName": "MotorTorque",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.99612489568853435,
+        "RuntimeInSeconds": 1.762,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ],
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Timestamp"
+            ],
+            "InputColumnNames": [
+              "Timestamp"
+            ],
+            "TargetType": "Single"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration",
+              "Timestamp"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.23942718613469968,
+            "NumberOfTrees": 1738,
+            "SubsampleFraction": 0.89282317965067293,
+            "MaximumBinCountPerFeature": 332,
+            "FeatureFraction": 0.99578683267498413,
+            "L1Regularization": 2E-10,
+            "L2Regularization": 0.27988625410521289,
+            "LabelColumnName": "MotorTorque",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.99611276035013385,
+        "RuntimeInSeconds": 1.48,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ],
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Timestamp"
+            ],
+            "InputColumnNames": [
+              "Timestamp"
+            ],
+            "TargetType": "Single"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration",
+              "Timestamp"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 21,
+            "LearningRate": 0.25000734065888491,
+            "NumberOfTrees": 1538,
+            "SubsampleFraction": 0.99999977667298645,
+            "MaximumBinCountPerFeature": 300,
+            "FeatureFraction": 0.96778564495350217,
+            "L1Regularization": 4.6683627455700773E-10,
+            "L2Regularization": 0.32130881725696214,
+            "LabelColumnName": "MotorTorque",
+            "FeatureColumnName": "Features"
+          }
+        }
+      },
+      {
+        "Version": 1,
+        "Type": "Trial",
+        "TrainerName": "LightGbmRegression",
+        "Score": 0.99583826611761883,
+        "RuntimeInSeconds": 3.618,
+        "Parameter": {
+          "_SCHEMA_": "e0 * e1 * e2 * e5",
+          "e0": {
+            "OutputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ],
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration"
+            ]
+          },
+          "e1": {
+            "OutputColumnNames": [
+              "Timestamp"
+            ],
+            "InputColumnNames": [
+              "Timestamp"
+            ],
+            "TargetType": "Single"
+          },
+          "e2": {
+            "InputColumnNames": [
+              "CableLength",
+              "CableWeightMeter",
+              "CableRadius",
+              "CableVolumeMeter",
+              "WaterDensity",
+              "Gravity",
+              "PayloadWeight",
+              "PayloadVolume",
+              "WinchRadius",
+              "WinchWeight",
+              "WinchFriction",
+              "CableLengthOnWinch",
+              "CableLengthInWater",
+              "CableSpeed",
+              "CableAcceleration",
+              "WinchAngularSpeed",
+              "WinchAngularAcceleration",
+              "Timestamp"
+            ],
+            "OutputColumnName": "Features"
+          },
+          "e5": {
+            "NumberOfLeaves": 4,
+            "MinimumExampleCountPerLeaf": 20,
+            "LearningRate": 0.13530280532594743,
+            "NumberOfTrees": 3639,
+            "SubsampleFraction": 0.99999977667298645,
+            "MaximumBinCountPerFeature": 368,
+            "FeatureFraction": 0.99999999,
+            "L1Regularization": 9.0104485453747394E-10,
+            "L2Regularization": 0.28752174328681973,
+            "LabelColumnName": "MotorTorque",
+            "FeatureColumnName": "Features"
+          }
+        }
+      }
+    ],
+    "Estimators": {
+      "e0": "ReplaceMissingValues",
+      "e1": "ConvertType",
+      "e2": "Concatenate",
+      "e3": "FastTreeRegression",
+      "e4": "FastForestRegression",
+      "e5": "LightGbmRegression",
+      "e6": "LbfgsPoissonRegressionRegression",
+      "e7": "SdcaRegression"
+    },
+    "Schema": "e0 * e1 * e2 * (e3 + e4 + e5 + e6 + e7)",
+    "MetricName": "RSquared",
+    "ModelFilePath": "D:\\source\\visual-studio\\NET10\\MLTest01\\MLTest01.WebApp\\MLModel.mlnet"
+  },
+  "Type": "TrainingConfig",
+  "Version": 5,
+  "TrainingOption": {
+    "Version": 2,
+    "Subsampling": false,
+    "Tuner": "eci-cfo",
+    "Type": "RegressionTrainingOption",
+    "TrainingTime": 240,
+    "OptimizeMetric": "RSquared",
+    "LabelColumn": "MotorTorque",
+    "AvailableTrainers": [
+      "SDCA",
+      "LBFGS",
+      "LGBM",
+      "FASTTREE",
+      "FASTFOREST"
+    ],
+    "ValidationOption": {
+      "Version": 0,
+      "Type": "CrossValidationValidationOption",
+      "NumberOfFolds": 5
+    }
+  }
+}

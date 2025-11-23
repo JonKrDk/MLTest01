@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using MLTest01_WebApp
 @using Microsoft.ML
 @using Microsoft.ML.AutoML
 @using Microsoft.ML.Data
@@ -9,9 +10,10 @@
 <PageTitle>Titanic ML Test</PageTitle>
 
 <button class="btn btn-primary" onclick=@OnClickStart>Start</button>
+<button class="btn btn-primary" onclick=@OnClickTest>Test</button>
 
 @code {
-    private const string datapath = "Data/titanic.csv";
+    private const string datapath = "Data/input.csv";
 
     private async Task OnClickStart()
     {
@@ -22,14 +24,14 @@
         ColumnInferenceResults columnInference = context.Auto().InferColumns(
             datapath,
             separatorChar: ',',
-            labelColumnName: "Survived",
+            labelColumnName: "MotorTorque",
             groupColumns: false);
 
         TextLoader textLoader = context.Data.CreateTextLoader(columnInference.TextLoaderOptions);
 
         IDataView dataView = textLoader.Load(datapath);
 
-        var columnsToExclude = new[] { "PassengerId", "Name", "Ticket", "Fare", "Embarked" };
+        var columnsToExclude = new[] { "MotorPower", "Motor1Current", "Motor2Current", "Motor3Current", "Motor4Current", "Motor5Current", "Motor6Current" };
 
         dataView = context.Transforms.DropColumns(columnsToExclude)
             .Fit(dataView)
@@ -51,7 +53,7 @@
             .SetDataset(trainValidationData);
 
         var monitor = new AutoMLMonitor(pipeline, autoMLMonitorLogger);
-        
+
         experiment.SetMonitor(monitor);
 
         var cancellationTokenSource = new CancellationTokenSource();
@@ -75,4 +77,47 @@
 
         context.Model.Save(bestModel, dataView.Schema, "Data/titanic_automl_model.zip");
     }
+
+    private void OnClickTest()
+    {
+        //Load sample data
+        var sampleData = new MLModel.ModelInput()
+        {
+            Timestamp = DateTime.Parse("2025-11-23 05:30"),
+            CableLength = 2000.0f,
+            CableWeightMeter = 10.0f,
+            CableRadius = 0.025f,
+            CableVolumeMeter = 0.002f,
+            WaterDensity = 1.025f,
+            Gravity = 9.81f,
+            PayloadWeight = 20000.0f,
+            PayloadVolume = 20.0f,
+            WinchRadius = 0.8f,
+            WinchWeight = 1000.0f,
+            WinchFriction = 0.0f,
+            CableLengthOnWinch = 1300.0f,
+            CableLengthInWater = 700.0f,
+            CableSpeed = 5.0f,
+            CableAcceleration = -0.1f,
+            WinchAngularSpeed = -0.1f,
+            WinchAngularAcceleration = -0.125f,
+        };
+
+        //Load model and predict output
+        var result = MLModel.Predict(sampleData);
+
+        Logger.LogDebug($"Predicted Motor Torque: {result.Score}");
+    }
+
+    // private async Task Onclick()
+    // {
+    //     List<ElarsSimulationData> elarsSimulationDataList = simulatorUnitOfWork.ElarsSimulationData.GetAll(
+    //         orderBy: q => q.OrderBy(q => q.Timestamp)
+    //     );
+
+    //     CsvWriter csvWriter = new CsvWriter(new StreamWriter("export.csv"), System.Globalization.CultureInfo.InvariantCulture, false);
+    //     csvWriter.WriteRecords(elarsSimulationDataList);
+
+    //     Logger.LogDebug("Done exporting CSV");
+    // }
 }
